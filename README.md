@@ -1,36 +1,177 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Real-Time Ticket Booking System
 
-## Getting Started
+A full-stack ticket booking platform supporting real-time seat synchronization, concurrency-safe reservations, and automated reservation expiration.
 
-First, run the development server:
+## Demo
+- Live Demo
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+    - Frontend: (https://ticket-booking-frontend-ashen.vercel.app/)
+
+    - Backend API Docs: (https://ticket-booking-backend-1-lppv.onrender.com/docs)
+
+<!-- - Demo Video
+
+    - <video_url> -->
+## Features
+1. Real-time seat updates using Socket.IO
+2. Concurrency-safe seat reservation using Optimistic Concurrency Control (OCC)
+3. Automated reservation expiration with BullMQ and Redis
+4. PostgreSQL transactions for reservation consistency
+5. Integration tested reservation workflows
+6. Swagger API documentation
+
+## Tech Stack
+- ### Frontend
+    - Next.js
+    - React
+    - TypeScript
+    - TanStack Query
+    - Socket.IO Client
+    - Tailwind CSS
+- ### Backend
+    - Node.js
+    - Express.js
+    - TypeScript
+    - Prisma ORM
+    - PostgreSQL
+    - Redis
+    - BullMQ
+    - Socket.IO
+
+## Reservation Flow
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant F as Next.js
+    participant A as Express API
+    participant DB as PostgreSQL
+    participant Q as BullMQ
+    participant S as Socket.IO
+
+    U->>F: Select Seats
+
+    F->>A: POST /reservations
+
+    A->>DB: Read Seat + Version
+
+    A->>DB: OCC Update Seat
+
+    DB-->>A: Update Success
+
+    A->>DB: Create Reservation
+
+    A->>Q: Schedule Expiration Job
+
+    A->>S: Emit seat:update
+
+    S-->>F: Seat Held Event
+
+    F-->>U: UI Updated
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Booking Confirmation Flow
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant F as Next.js
+    participant A as Express API
+    participant DB as PostgreSQL
+    participant S as Socket.IO
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+    U->>F: Confirm Reservation
 
-## Learn More
+    F->>A: POST /confirm
 
-To learn more about Next.js, take a look at the following resources:
+    A->>DB: Validate Reservation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    A->>DB: Mark BOOKED
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    DB-->>A: Success
 
-## Deploy on Vercel
+    A->>S: Emit seat:update
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    S-->>F: Seat Booked Event
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    F-->>U: UI Updated
+```
+
+## Reservation Expiration Flow
+
+```mermaid
+sequenceDiagram
+    participant Q as BullMQ Worker
+    participant DB as PostgreSQL
+    participant S as Socket.IO
+    participant F as Next.js
+
+    Q->>DB: Expire Reservation
+
+    Q->>DB: Release Seats
+
+    DB-->>Q: Success
+
+    Q->>S: Emit seat:update
+
+    S-->>F: Seat Available Event
+
+    F-->>F: Update TanStack Query Cache
+```
+
+## Concurrency Handling
+
+To prevent double booking, the system uses Optimistic Concurrency Control.
+
+``` ts
+UPDATE seat
+SET status='HELD',
+    version=version+1
+WHERE id=?
+  AND version=?
+  AND status='AVAILABLE';
+```
+
+If another reservation updates the seat first, the transaction fails and the reservation request is rejected.
+
+## Tested Scenarios
+
+1. Seat retrieval
+2. Seat reservation
+3. Reservation confirmation
+4. Double booking prevention
+5. Reservation expiration
+6. Confirming expired reservations
+7. Concurrent reservation attempt
+
+## API Documentation
+
+Swagger documentation is available at:
+
+`
+/docs
+`
+
+## Running Locally
+
+### Backend
+
+```bash
+npm install
+npm run dev
+```
+
+### Frontend
+
+```bash
+npm install
+npm run dev
+```
+
+## Future Improvements
+
+1. Google OAuth Authentication
+2. User Booking History
+3. Socket.IO Room-Based Broadcasting
+4. Event Management Dashboard
+5. Payment Integratio5
