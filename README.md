@@ -139,15 +139,15 @@ If another reservation updates the seat first, the transaction fails and the res
 
 ### Seat Selection
 
-![Seat-Selection](./screenchots/seat-selection.png)
+![Seat-Selection](./public/screenchots/seat-selection.png)
 
 ### Active Reservation
 
-![Reservation](./screenchots/reservation.png)
+![Reservation](./public/screenchots/reservation.png)
 
 ### Confirmed Booking
 
-![Booking](./screenchots/booking.png)
+![Booking](./public/screenchots/booking.png)
 
 ## Tested Scenarios
 
