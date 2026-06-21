@@ -134,6 +134,21 @@ WHERE id=?
 
 If another reservation updates the seat first, the transaction fails and the reservation request is rejected.
 
+
+## ScreenShots
+
+### Seat Selection
+
+![Seat-Selection](./screenchots/seat-selection.png)
+
+### Active Reservation
+
+![Reservation](./screenchots/reservation.png)
+
+### Confirmed Booking
+
+![Booking](./screenchots/booking.png)
+
 ## Tested Scenarios
 
 1. Seat retrieval
