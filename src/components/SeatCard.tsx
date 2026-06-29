@@ -19,10 +19,10 @@ export default function SeatCard({
       : status === "HELD"
       ? "bg-yellow-500"
       : "bg-red-500";
-console.log(
-  seatNumber,
-  status
-);
+// console.log(
+//   seatNumber,
+//   status
+// );
   return (
     <button
     disabled={status!=="AVAILABLE"}

@@ -3,6 +3,10 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Providers from "@/providers/QueryProvider";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import AuthProvider from "@/providers/AuthProvider";
+
+import "@/libs/axiosInterceptor";
+import Navbar from "@/components/common/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,9 +35,11 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <Providers>
-
+        <AuthProvider>
+        <Navbar/>
         {children}
         <ReactQueryDevtools initialIsOpen={false} />
+        </AuthProvider>
         </Providers>
       </body>
     </html>

@@ -189,4 +189,4 @@ npm run dev
 2. User Booking History
 3. Socket.IO Room-Based Broadcasting
 4. Event Management Dashboard
-5. Payment Integratio5
+5. Payment Integration

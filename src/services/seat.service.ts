@@ -1,4 +1,4 @@
-import { api } from "./api"
+import { api } from "../libs/api"
 
 export const getSeats=async(eventId:string)=>{
     const response= await api.get(`/api/events/${eventId}/seats`)

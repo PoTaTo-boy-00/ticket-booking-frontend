@@ -1,5 +1,5 @@
 
-import { api } from "./api"
+import { api } from "../libs/api"
 
 export const reserveSeats=async({eventId,userId,seatIds}:{
     eventId:string,

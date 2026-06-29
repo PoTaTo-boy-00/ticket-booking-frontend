@@ -6,4 +6,3 @@ export interface SeatInterface{
 }
 
 export type Seats= SeatInterface[];
-
