@@ -144,7 +144,7 @@ const EventPage = () => {
                   <span className="text-xs text-[#9B8DB0]">Available</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <div className="w-3.5 h-3.5 rounded-sm bg-[#2943ed]" />
+                  <div className="w-3.5 h-3.5 rounded-sm bg-[rgb(58,64,237)]" />
                   <span className="text-xs text-[#9B8DB0]">Selected</span>
                 </div>
                 <div className="flex items-center gap-1.5">

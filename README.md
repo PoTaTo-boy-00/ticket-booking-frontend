@@ -17,8 +17,9 @@ A full-stack ticket booking platform supporting real-time seat synchronization, 
 2. Concurrency-safe seat reservation using Optimistic Concurrency Control (OCC)
 3. Automated reservation expiration with BullMQ and Redis
 4. PostgreSQL transactions for reservation consistency
-5. Integration tested reservation workflows
-6. Swagger API documentation
+5. Google OAuth authentication with JWT access tokens and rotating refresh token sessions 
+6. Integration tested reservation workflows
+7. Swagger API documentation
 
 ## Tech Stack
 - ### Frontend
@@ -185,8 +186,7 @@ npm run dev
 
 ## Future Improvements
 
-1. Google OAuth Authentication
-2. User Booking History
-3. Socket.IO Room-Based Broadcasting
-4. Event Management Dashboard
-5. Payment Integration
+1. User Booking History
+2. Socket.IO Room-Based Broadcasting
+3. Event Management Dashboard
+4. Payment Integration
