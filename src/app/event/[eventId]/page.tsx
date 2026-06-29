@@ -112,7 +112,7 @@ const EventPage = () => {
           {/* Timed-out notice */}
           {timedOut && (
             <div className="mb-6 px-5 py-4 rounded-xl bg-[#EDE9FE] border border-[#C4B5FD] text-[#5B21B6] text-sm flex items-center gap-3">
-              <span className="text-base">⏰</span>
+            
               Your reservation expired. Those seats have been released — pick again.
             </div>
           )}

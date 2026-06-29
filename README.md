@@ -137,6 +137,8 @@ If another reservation updates the seat first, the transaction fails and the res
 
 
 ## ScreenShots
+### Landing
+![Landing](./public/screenchots/main.png)
 
 ### Seat Selection
 
@@ -149,6 +151,10 @@ If another reservation updates the seat first, the transaction fails and the res
 ### Confirmed Booking
 
 ![Booking](./public/screenchots/booking.png)
+
+### Reservation Expiry
+
+![Reservation-expiry](./public/screenchots/reservation-expiry.png)
 
 ## Tested Scenarios
 
