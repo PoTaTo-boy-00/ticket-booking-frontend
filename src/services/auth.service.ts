@@ -1,16 +1,10 @@
 import { refreshApi } from "@/libs/refreshApi";
 import { api } from "../libs/api";
-import axios from "axios";
+
 
 export const loginWithGoogle = async (idToken: string) => {
+  return api.post("/api/auth/google", { idToken });
   
-  return axios.post(
-    "http://localhost:5000/api/auth/google",
-    { idToken },
-    {
-      withCredentials: true,
-    }
-  );
 };
 
 export const getCurrentUser = async () => {
