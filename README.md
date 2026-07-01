@@ -234,6 +234,14 @@ npm run dev
 npm run dev
 ```
 
+## Project Repositories
+
+| Repository                 | Link                                                        |
+| -------------------------- | ----------------------------------------------------------- |
+| Backend                    | https://github.com/PoTaTo-boy-00/ticket-booking-backend     |
+| Email Notification Service | https://github.com/PoTaTo-boy-00/bg-processor               |
+
+
 
 ## Future Improvements
 
