@@ -7,6 +7,8 @@ A full-stack ticket booking platform supporting real-time seat synchronization, 
 
     - Frontend: (https://ticket-booking-frontend-ashen.vercel.app/)
 
+    - Email API: (https://bg-processor.onrender.com)
+
     - Backend API Docs: (https://ticket-booking-backend-1-lppv.onrender.com/docs)
 
 <!-- - Demo Video
@@ -177,19 +179,61 @@ Swagger documentation is available at:
 
 ## Running Locally
 
-### Backend
+### 1. Clone the Repository
+
+```bash
+git clone <repository-url>
+cd <repository-name>
+```
+
+### 2. Configure Environment Variables
+
+Both the backend and frontend include a `.env.example` file.
+
+#### Backend
+
+```bash
+cp .env.example .env
+```
+
+Update the values in `.env` with your own configuration.
+
+#### Frontend
+
+```bash
+cp .env.example .env.local
+```
+
+Update the values in `.env.local` with your own configuration.
+
+### 3. Install Dependencies
+
+#### Backend
 
 ```bash
 npm install
-npm run dev
 ```
 
-### Frontend
+#### Frontend
 
 ```bash
 npm install
+```
+
+### 4. Start the Development Servers
+
+#### Backend
+
+```bash
 npm run dev
 ```
+
+#### Frontend
+
+```bash
+npm run dev
+```
+
 
 ## Future Improvements
 
