@@ -18,8 +18,9 @@ A full-stack ticket booking platform supporting real-time seat synchronization, 
 3. Automated reservation expiration with BullMQ and Redis
 4. PostgreSQL transactions for reservation consistency
 5. Google OAuth authentication with JWT access tokens and rotating refresh token sessions 
-6. Integration tested reservation workflows
-7. Swagger API documentation
+6. Send Email Notification on Booking Success
+7. Integration tested reservation workflows
+8. Swagger API documentation
 
 ## Tech Stack
 - ### Frontend
