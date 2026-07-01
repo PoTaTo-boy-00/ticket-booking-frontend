@@ -20,10 +20,10 @@ export const reserveSeats=async({eventId,userId,seatIds}:{
     }
 }
 
-export const confirmReservation=async( reservationId:string, eventId:string )=>{
+export const confirmReservation=async( reservationId:string, eventId:string,email:string,name:string )=>{
     try {
-        
-        const response=await api.post(`/api/reservations/${reservationId}/confirm`,{eventId})
+        console.log(email,name)
+        const response=await api.post(`/api/reservations/${reservationId}/confirm`,{eventId,email,name})
         return response.data
     } catch (error) {
         throw new Error("Failed to confirm reservation")

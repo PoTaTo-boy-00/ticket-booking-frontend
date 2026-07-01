@@ -23,7 +23,13 @@ const EventPage = () => {
   const [timedOut, setTimedOut] = useState(false)
   const { data: seats, isLoading, refetch } = useSeats(eventId)
   const { data: session } = useUser()
-
+if(!session){
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-[#F8F5FF]">
+      <p className="text-[#9B8DB0] font-medium">Please log in to view this page.</p>
+    </div>
+  )
+}
 
   const handleTimerExpire = () => {
     setTimedOut(true)
@@ -54,8 +60,9 @@ const EventPage = () => {
   }
 
   const handleConfirm = async () => {
+    // console.log(session.email," ",session.name)
     if (!reservationId) return
-    await confirmMutation.mutateAsync({ reservationId, eventId })
+    await confirmMutation.mutateAsync({ reservationId, eventId ,email: session.email , name: session.name  })
     setBookingConfirmed(true)
     setSelectedSeats([])
     setReservationId(null)

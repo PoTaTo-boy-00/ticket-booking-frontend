@@ -6,13 +6,20 @@ export const useConfirmReservation = () => {
     mutationFn: ({
       eventId,
       reservationId,
+      email,
+      name,
     }: {
       eventId: string;
       reservationId: string;
+      email: string;
+      name: string;
+      
     }) =>
       confirmReservation(
         reservationId,
-        eventId
+        eventId,
+        email,
+        name
       ),
   });
 };
